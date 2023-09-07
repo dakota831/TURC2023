@@ -15,3 +15,8 @@ body {
   font-family: "Montserrat", sans-serif;
 
 }
+
+.align_center {
+  display: flex;
+  align-items: center;
+}
