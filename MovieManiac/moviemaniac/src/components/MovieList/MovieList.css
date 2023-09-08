@@ -1,3 +1,4 @@
+
 .movie_list_header {
     justify-content: space-between;
     padding: 10px 30px;
@@ -16,7 +17,7 @@
 
 .movie_filter_item {
     padding: 5px 10px;
-    cursor: none;
+    cursor: pointer;
 }
 
 .movie_filter_item.active {

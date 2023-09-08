@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./MovieList.css";
 import Fire from "../../assets/fire.png";
 import MovieCard from "../MovieList/MovieCard";
+import FilterGroup from "./FilterGroup";
 
 const MovieList = () => {
-  const [movies, setMovies] = useState([]); // [movies, setMovies
+  const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [minRating, setMinRating] = useState(0);
+
   useEffect(() => {
     fetchMovies();
   }, []);
@@ -15,6 +19,19 @@ const MovieList = () => {
     );
     const data = await response.json();
     setMovies(data.results);
+    setFilteredMovies(data.results);
+  };
+
+  const handleFilter = (rate) => {
+    if (rate === minRating) {
+      setMinRating(0);
+      setFilteredMovies(movies);
+    } else {
+      setMinRating(rate);
+
+      const filtered = movies.filter((movie) => movie.vote_average >= rate);
+      setFilteredMovies(filtered);
+    }
   };
 
   return (
@@ -25,11 +42,11 @@ const MovieList = () => {
         </h2>
 
         <div className="align_center movie-list_fs">
-          <ul className="align_center movie_filter">
-            <li className="movie_filter_item active">8+ Star</li>
-            <li className="movie_filter_item">7+ Star</li>
-            <li className="movie_filter_item">6+ Star</li>
-          </ul>
+          <FilterGroup
+            minRating={minRating}
+            OnRatingClick={handleFilter}
+            rating={[8, 7, 6]}
+          />
 
           <select name="" id="" className="movie_sorting">
             <option value="">SortBy</option>
@@ -43,7 +60,7 @@ const MovieList = () => {
         </div>
       </header>
       <div className="movie_cards">
-        {movies.map((movie) => (
+        {filteredMovies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
