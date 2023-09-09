@@ -1,13 +1,12 @@
-
 .movie_list_header {
-    justify-content: space-between;
     padding: 10px 30px;
+    justify-content: space-between;
     margin-bottom: 5px;
 }
 
 .movie_list_heading {
     font-size: 26px;
-    color: #ffe400
+    color: var(--heading_color);
 }
 
 .movie_filter {
@@ -35,7 +34,6 @@
     height: 30px;
     padding: 0 5px;
     margin: 0 10px;
-
 }
 
 .movie_cards {

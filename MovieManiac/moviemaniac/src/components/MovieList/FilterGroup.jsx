@@ -1,17 +1,13 @@
 import React from "react";
 
-const FilterGroup = ({ minRating, onRatingClick, ratings }) => {
+const FilterGroup = ({ minRating, onRatingClick, rating }) => {
   return (
     <ul className="align_center movie_filter">
-      {ratings.map((rate) => (
+      {rating.map((rate) => (
         <li
-          className={
-            minRating === { rate }
-              ? "movie_filter_item active"
-              : "movie_filter_item"
-          }
+          className={`movie_filter_item ${minRating === rate ? "active" : ""}`}
           key={rate}
-          onClick={() => onRatingClick({ rate })}
+          onClick={() => onRatingClick(rate)}
         >
           {rate}+ Star
         </li>

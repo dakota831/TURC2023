@@ -6,7 +6,7 @@ import FilterGroup from "./FilterGroup";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [filterMovies, setFilterMovies] = useState([]);
   const [minRating, setMinRating] = useState(0);
 
   useEffect(() => {
@@ -19,18 +19,18 @@ const MovieList = () => {
     );
     const data = await response.json();
     setMovies(data.results);
-    setFilteredMovies(data.results);
+    setFilterMovies(data.results);
   };
 
   const handleFilter = (rate) => {
     if (rate === minRating) {
       setMinRating(0);
-      setFilteredMovies(movies);
+      setFilterMovies(movies);
     } else {
       setMinRating(rate);
 
       const filtered = movies.filter((movie) => movie.vote_average >= rate);
-      setFilteredMovies(filtered);
+      setFilterMovies(filtered);
     }
   };
 
@@ -44,7 +44,7 @@ const MovieList = () => {
         <div className="align_center movie-list_fs">
           <FilterGroup
             minRating={minRating}
-            OnRatingClick={handleFilter}
+            onRatingClick={handleFilter}
             rating={[8, 7, 6]}
           />
 
@@ -60,7 +60,7 @@ const MovieList = () => {
         </div>
       </header>
       <div className="movie_cards">
-        {filteredMovies.map((movie) => (
+        {filterMovies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
