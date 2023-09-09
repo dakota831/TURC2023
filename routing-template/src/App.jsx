@@ -1,12 +1,7 @@
 import React from "react";
 
 import Navbar from "./components/Navbar/Navbar";
-import { Route, Routes } from "react-router-dom";
-import Home from "./components/Home/Home";
-import Articles from "./components/Articles/Articles";
-import Products from "./components/Products/Products";
-import Admin from "./components/Admin/Admin";
-import NotFound from "./components/NotFound/NotFound";
+import AllRouting from "./components/AllRouting";
 
 const App = () => {
   return (
@@ -14,13 +9,7 @@ const App = () => {
       <Navbar />
 
       <main className="app_main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/articles" element={<Articles />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AllRouting />
       </main>
     </div>
   );
