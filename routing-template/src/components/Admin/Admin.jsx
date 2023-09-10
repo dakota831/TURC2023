@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Outlet, Navigate } from "react-router-dom";
 
 const Admin = () => {
-  const user = { role: "user" };
+  const user = { role: "admin" };
 
   if (user.role !== "admin") {
     return <Navigate to="/" />;
@@ -16,7 +16,7 @@ const Admin = () => {
           <Link to="/admin/sales">Sales</Link>
         </li>
         <li>
-          <Link to="/admin/sellers">sellers</Link>
+          <Link to="/admin/sellers">Sellers</Link>
         </li>
       </ul>
 
