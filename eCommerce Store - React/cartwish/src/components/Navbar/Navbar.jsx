@@ -1,7 +1,13 @@
 import React from "react";
 
 import "./Navbar.css";
-import 
+import rocket from "../../assets/rocket.png";
+import star from "../../assets/glowing-star.png";
+import idButton from "../../assets/id-button.png";
+import memo from "../../assets/memo.png";
+import order from "../../assets/package.png";
+import lock from "../../assets/locked.png";
+import LinkWithIcon from "./LinkWithIcon";
 
 const Navbar = () => {
   return (
@@ -19,33 +25,16 @@ const Navbar = () => {
           </button>
         </form>
       </div>
-      <div className="navbar_links">
-        <ul>
-          <li>
-            <a href="/">
-              Home
-              <img src="" className="link_emoji" />
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Products
-              <img src="" className="link_emoji" />
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Cart
-              <img src="" className="link_emoji" />
-            </a>
-          </li>
-          <li>
-            <a href="/">
-              Login
-              <img src="" className="link_emoji" />
-            </a>
-          </li>
-        </ul>
+      <div className="align_center navbar_links">
+        <LinkWithIcon title="Home" link="/" emoji={rocket} />
+        <LinkWithIcon title="Products" link="/products" emoji={star} />
+        <LinkWithIcon title="Login" link="/login" emoji={idButton} />
+        <LinkWithIcon title="Register" link="/register" emoji={memo} />
+        <LinkWithIcon title="Orders" link="/orders" emoji={order} />
+        <LinkWithIcon title="Logout" link="/logout" emoji={lock} />
+        <a href="/cart" className="align_center">
+          Cart <p className="align_center cart_counts">0</p>
+        </a>
       </div>
     </nav>
   );
